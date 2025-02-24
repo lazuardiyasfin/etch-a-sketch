@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    width: 500px;
+}
+
+.grid {
+    display: flex;
+    border: 1px solid black;
+}
+
+.cell {
+    width: 31.25px;
+    height: 31.25px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
