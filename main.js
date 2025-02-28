@@ -1,3 +1,5 @@
+generateGrid();
+
 function generateGrid() {
     const container = document.querySelector('.grid-container');
 
@@ -15,8 +17,8 @@ function generateGrid() {
             column.appendChild(cell);
 
             cell.classList.add('cell');
+
+            cell.addEventListener('mouseover', () => cell.style.background = 'black');
         }
     }
 }
-
-generateGrid();
