@@ -2,7 +2,8 @@ generateGrid(16);
 
 document.querySelector('.grid-container').addEventListener('mouseover', (e) => {
     if (e.target.classList.contains('cell')) {
-        e.target.style.background = 'black';
+        e.target.style.background = 
+            `rgb(${getRandomIntensity()}, ${getRandomIntensity()}, ${getRandomIntensity()}, ${getOpacity(e.target)})`;
     }
 });
 
@@ -53,4 +54,18 @@ function getSquareSide(squaresPerSide) {
     let containerWidth = parseFloat(containerStyles.width);
 
     return containerWidth / squaresPerSide;
+}
+
+function getRandomIntensity() {
+    return Math.floor(Math.random() * 256);
+}
+
+function getOpacity(cell) {
+    let parsedBackground = cell.style.background.replace(/[rgba(\s)]/g, '').split(',');
+
+    if (parsedBackground.length < 4) return 0.1;
+
+    let opacity = parseFloat(parsedBackground[3]);
+
+    return opacity < 1 ? opacity + 0.1 : 1;
 }
