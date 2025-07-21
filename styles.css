@@ -8,8 +8,12 @@ body {
     align-items: center;
 }
 
+#new-grid-btn {
+    font-size: large;
+}
+
 .grid-container {
-    width: 500px;
+    width: 676px;
 }
 
 .grid {
