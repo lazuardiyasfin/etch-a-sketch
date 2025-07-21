@@ -1,11 +1,15 @@
 generateGrid(16);
 
-document.querySelector('#new-grid-btn').addEventListener('click', handleNewGridButton);
+document.querySelector('.grid-container').addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains('cell')) {
+        e.target.style.background = 'black';
+    }
+});
 
-function handleNewGridButton() {
+document.querySelector('#new-grid-btn').addEventListener('click', () => {
     let squaresPerSide = prompt("Enter squares per side:");
 
-    while (squaresPerSide == null || Number(squaresPerSide) <= 0 || Number(squaresPerSide) > 100 || isNaN(Number(squaresPerSide))) {
+    while (squaresPerSide == null || Number(squaresPerSide) <= 0 || Number(squaresPerSide) > 100 || isNaN(Number(squaresPerSide)) || !Number.isInteger(Number(squaresPerSide))) {
         if (squaresPerSide == null) {
             return;
         }
@@ -16,7 +20,7 @@ function handleNewGridButton() {
 
     document.querySelector('.grid-container').replaceChildren();
     generateGrid(squaresPerSide);
-}
+});
 
 function generateGrid(squaresPerSide) {
     const container = document.querySelector('.grid-container');
@@ -40,8 +44,6 @@ function generateGrid(squaresPerSide) {
 
             cell.style.width = `${cellSide}px`;
             cell.style.height = `${cellSide}px`;
-
-            cell.addEventListener('mouseover', () => cell.style.background = 'black');
         }
     }
 }
