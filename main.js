@@ -63,9 +63,9 @@ function getRandomIntensity() {
 function getOpacity(cell) {
     let parsedBackground = cell.style.background.replace(/[rgba(\s)]/g, '').split(',');
 
-    if (parsedBackground.length < 4) return 0.1;
+    if (parsedBackground == "") return 0.1;
 
-    let opacity = parseFloat(parsedBackground[3]);
+    let opacity = parsedBackground[3] != undefined ? parseFloat(parsedBackground[3]) : 1;
 
-    return opacity < 1 ? opacity + 0.1 : 1;
+    return Math.min(opacity + 0.1, 1);
 }
